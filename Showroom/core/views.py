@@ -7,11 +7,11 @@ class CustomViewSet(viewsets.GenericViewSet):
     search_fields = None
 
     def get(self, request):
-        page = self.paginate_queryset(self.filter_queryset(self.queryset))
+        page = self.queryset
 
         if page is not None:
             serializer = self.serializer_class(page, many=True)
-            return self.get_paginated_response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
