@@ -14,9 +14,7 @@ class CarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Car
-        exclude = (
-            'updated',
-        )
+        fields = "__all__"
 
 
 class SupplierSerializer(serializers.ModelSerializer):
@@ -43,9 +41,7 @@ class CarShowroomSerializer(serializers.ModelSerializer):
         model = CarShowroom
         fields = [
             'name',
-            'location',
             'balance',
-            'created',
             'cars',
         ]
 
@@ -56,9 +52,7 @@ class TransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transaction
-        exclude = (
-            'updated',
-        )
+        fields = '__all__'
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -68,7 +62,6 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = [
             'first_name',
-            'created',
             'balance',
             'transactions',
         ]
@@ -81,6 +74,4 @@ class ShowroomSellCarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShowroomSellCar
-        exclude = (
-            'created',
-        )
+        fields = '__all__'
